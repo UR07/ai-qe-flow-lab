@@ -28,3 +28,11 @@ To add an optional explanation, install and start Ollama separately, download a 
 The Playwright test submits a policy through the UI and checks the response, database and log using the same request ID. For the failure demo, the server enables a test-only fault, the test captures evidence, and the local matcher compares structured signals with hand-authored examples. Similarity is not calibrated confidence and suggestions are not confirmed root causes. Review the original evidence and use only synthetic data; the report is not designed for confidential production logs. Local database and log files persist until removed manually.
 
 This is independent of the existing `ai-qe-triage` project: it does not use its code, data, or model. Two future project ideas are recorded in `docs/future-projects.md` and are not part of this implementation.
+
+## E-commerce testing targets
+
+Everyday Supply is a fictional e-commerce store at https://ur07-qe-shop.vercel.app. `npm run start:shop` also starts it locally at http://127.0.0.1:4180. Browse the catalogue, add or remove products and place a simulated order. There is no real payment, backend order API, shared database or service log: cart and last order are stored in the current browser. Use fictional names only. The Vercel deployment was uploaded directly and is not automatically updated by GitHub pushes.
+
+`npm run test:shop` runs the store tests locally. To run the same tests against a hosted copy, set `SHOP_URL` to that site's URL, for example in PowerShell: `$env:SHOP_URL='https://example.com'; npm run test:shop`. The checks cover catalogue loading, cart persistence and removal, checkout and an empty cart.
+
+`npm run test:live` separately runs a small browser and API suite against [Automation Exercise](https://automationexercise.com/), a third-party site that publishes practice test cases and APIs. Availability and data may change; these external tests are intentionally separate from the default suite. They do not access that site's database or internal logs.
