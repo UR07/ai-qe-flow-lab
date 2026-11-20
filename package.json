@@ -1,0 +1,17 @@
+{
+  "name": "ai-qe-flow-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A local QE demonstration connecting UI, API, SQLite, logs and AI-assisted investigation.",
+  "engines": { "node": ">=22.13.0" },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test:unit": "node --test tests/unit/*.test.mjs",
+    "test:e2e": "playwright test",
+    "test": "npm run test:unit && npm run test:e2e",
+    "demo:failure": "node scripts/run-failure-demo.mjs",
+    "report": "node scripts/generate-report.mjs"
+  },
+  "devDependencies": { "@playwright/test": "1.65.1" }
+}

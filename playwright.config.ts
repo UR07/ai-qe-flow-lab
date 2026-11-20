@@ -1,0 +1,2 @@
+import { defineConfig } from '@playwright/test';
+export default defineConfig({ testDir: './tests/e2e', workers: 1, retries: 0, reporter: [['list'], ['./src/evidence-reporter.mjs']], use: { baseURL: 'http://127.0.0.1:4178', trace: 'retain-on-failure', screenshot: 'only-on-failure' }, webServer: { command: 'node src/server.mjs', url: 'http://127.0.0.1:4178', reuseExistingServer: false, timeout: 30000 } });
