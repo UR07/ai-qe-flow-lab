@@ -1,2 +1,2 @@
 import { defineConfig } from '@playwright/test';
-export default defineConfig({ testDir: './tests/live', workers: 1, retries: 0, timeout: 45000, reporter: 'list', use: { trace: 'retain-on-failure', screenshot: 'only-on-failure' } });
+export default defineConfig({ testDir: './tests/live', outputDir: 'test-results/practice', workers: 1, retries: 0, timeout: 45000, metadata: { target: 'https://automationexercise.com/' }, reporter: [['list'], ['html', { outputFolder: 'artifacts/practice-report', open: 'never' }]], use: { trace: 'retain-on-failure', screenshot: 'only-on-failure' } });
